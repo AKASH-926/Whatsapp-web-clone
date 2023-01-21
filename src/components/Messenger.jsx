@@ -17,7 +17,7 @@ const Header = styled(AppBar)`
 
 export default function Messenger() {
     return (
-        <Box>
+        <Component>
             <Header>
 
                 <Toolbar>
@@ -26,7 +26,7 @@ export default function Messenger() {
 
             </Header>
 
-        </Box>
+        </Component>
 
     )
 }
