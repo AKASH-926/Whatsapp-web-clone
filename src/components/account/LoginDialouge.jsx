@@ -1,7 +1,10 @@
 import { Dialog, Box, Typography, List, ListItem, styled } from '@mui/material'
 import { qrCodeImage } from '../../constants/data'
-import React from 'react'
+import React, { useContext } from 'react'
 import { GoogleLogin } from '@react-oauth/google';
+
+import jwt_decode from 'jwt-decode'
+import { AccountContext } from '../context/AccountProvider';
 
 const Qrcode = styled('img')({
     height: 264,
@@ -44,8 +47,11 @@ const dialogStyle = {
 }
 
 export default function LoginDialouge() {
+
+    const { setaccount } = useContext(AccountContext)
     const onLoginSuccess = (res) => {
-        console.log(res)
+        const decode = jwt_decode(res.credential)
+        setaccount(decode)
     }
 
     const onLoginError = (err) => {
@@ -54,7 +60,8 @@ export default function LoginDialouge() {
     }
 
     return (
-        <Dialog open={true} PaperProps={{ sx: dialogStyle }}>
+        <Dialog open={true} PaperProps={{ sx: dialogStyle }}
+            hideBackdrop={true}>
             <Component>
                 <Container>
                     <Title> To use Whatsapp on your computer:</Title>
@@ -66,7 +73,7 @@ export default function LoginDialouge() {
                 </Container>
                 <Box style={{ position: 'relative' }} >
                     <Qrcode src={qrCodeImage} alt="qrcode" />
-                    <Box style={{ position: 'absolute', top: '50%', transform: 'translateX(50%)' }}>
+                    <Box style={{ position: 'absolute', top: '50%', left: '17%' }}>
                         <GoogleLogin
                             onSuccess={onLoginSuccess}
                             onError={onLoginError} />
