@@ -9,7 +9,7 @@ const MenuOption = styled(MenuItem)`
    color:#4A4A4A;
 `
 
-export default function HeaderMenu() {
+export default function HeaderMenu({ setopendrawer }) {
     const [open, setopen] = useState(null)
     const handleClose = () => {
         setopen(false)
@@ -39,8 +39,7 @@ export default function HeaderMenu() {
                 }}
 
             >
-                <MenuOption onClick={handleClose}>Profile</MenuOption>
-                <MenuOption onClick={handleClose}>My account</MenuOption>
+                <MenuOption onClick={() => { handleClose(); setopendrawer(true) }}>Profile</MenuOption>
                 <MenuOption onClick={handleClose}>Logout</MenuOption>
             </Menu>
         </>
