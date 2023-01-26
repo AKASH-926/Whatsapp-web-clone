@@ -7,9 +7,11 @@ background:#f8f9fa;
 padding:30px 0;
 text-align:center;
 height:100vh;
+
 `
 const Container = styled(Box)`
 padding:0 200px;
+
 
 `
 const Image = styled('img')({
@@ -38,6 +40,8 @@ const Styledivider = styled(Divider)
     margin:40px 0;
     opacity:0.4;
 `
+
+
 export default function Emptychat() {
     return (
         <Component>
@@ -47,7 +51,9 @@ export default function Emptychat() {
                 <SubTitle>Send and receive messages without keeping your phone online.</SubTitle>
                 <SubTitle>Use WhatsApp on up to 4 linked devices and 1 phone at the same time.</SubTitle>
                 <Styledivider />
+
             </Container>
+
         </Component>
     )
 }
